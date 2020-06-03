@@ -9,14 +9,17 @@ import '../pages/user/Register.dart';
 import '../pages/punchCard/PunchCard.dart';
 import '../pages/tabs/TabBarConTroller.dart';
 import '../pages/user/UserInfo.dart';
+import 'package:myapp/pages/firstPage/FirstPage.dart';
+
 //配置路由
 final routes = {
+  '/firstPage': (context) => FirstPage(),
   '/': (context, {arguments}) => Tabs(),
   '/punchcard': (context) => PunchCard(),
   '/login': (context) => Login(),
   '/register': (contex) => Register(),
   '/tabBarControllerPage': (context) => TabBarControllerPage(),
-  '/userInfo':(context) => UserInfo(),
+  '/userInfo': (context) => UserInfo(),
   // '/message': (context) => Message(),
   // '/messagefull': (context, {arguments}) => MessageFull(arguments: arguments)
 };

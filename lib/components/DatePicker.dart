@@ -45,6 +45,7 @@ class _DatePickerState extends State<DatePicker> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
+          Text('官方日期选择器：'),
           Text(formatDate(_nowDate, [yyyy, '-', mm, '-', dd])),
           Icon(Icons.arrow_drop_down),
         ],

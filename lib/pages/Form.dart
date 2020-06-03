@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../components/DatePicker.dart';
 import '../components/TimePicker.dart';
-
+import '../components/CupertinoDatePicker.dart';
 class FormPage extends StatefulWidget {
   String title;
   FormPage({Key key, this.title}) : super(key: key);
@@ -191,6 +191,7 @@ class _FormPageState extends State<FormPage> {
                         ),
                         DatePicker(),
                         TimePicker(),
+                        CupertinoDatePicker(),
                         Container(
                           margin: EdgeInsets.fromLTRB(0, 20, 0, 20),
                           width: double.infinity,

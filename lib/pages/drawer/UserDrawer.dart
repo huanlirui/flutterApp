@@ -25,8 +25,8 @@ class UserDrawer extends StatelessWidget {
                         child: ClipOval(
                           child: Image.asset(
                             'images/avator.jpg',
-                            height: 85,
-                            width: 85,
+                            height: 80,
+                            width: 80,
                             fit: BoxFit.cover,
                           ),
                         ),

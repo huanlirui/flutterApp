@@ -10,7 +10,11 @@ class TimePicker extends StatefulWidget {
 class _TimePickerState extends State<TimePicker> {
   var _time = TimeOfDay(hour: 12, minute: 00);
   _showTimePicker() async {
-    var result = await showTimePicker(context: context, initialTime: _time);
+    var result = await showTimePicker(
+      context: context,
+      initialTime: _time,
+      // locale: Locale('zh'),
+    );
     if (result != null) {
       setState(() {
         _time = result;
@@ -33,6 +37,7 @@ class _TimePickerState extends State<TimePicker> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
+           Text('官方时间选择器：'),
           Text(_time.format(context)),
           Icon(Icons.arrow_drop_down),
         ],
