@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import '../components/DatePicker.dart';
+import '../components/TimePicker.dart';
 
 class FormPage extends StatefulWidget {
   String title;
@@ -187,6 +189,8 @@ class _FormPageState extends State<FormPage> {
                         Column(
                           children: _getHobby(),
                         ),
+                        DatePicker(),
+                        TimePicker(),
                         Container(
                           margin: EdgeInsets.fromLTRB(0, 20, 0, 20),
                           width: double.infinity,
@@ -197,7 +201,8 @@ class _FormPageState extends State<FormPage> {
                             onPressed: () {
                               print(this.username);
                               print(this.sex);
-                              print(this.hobby.where((element) => element["checked"]==true));
+                              print(this.hobby.where(
+                                  (element) => element["checked"] == true));
                             },
                           ),
                         ),
