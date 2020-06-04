@@ -10,6 +10,7 @@ import '../pages/punchCard/PunchCard.dart';
 import '../pages/tabs/TabBarConTroller.dart';
 import '../pages/user/UserInfo.dart';
 import 'package:myapp/pages/firstPage/FirstPage.dart';
+import 'package:myapp/pages/dialog/DialogPage.dart';
 
 //配置路由
 final routes = {
@@ -20,6 +21,7 @@ final routes = {
   '/register': (contex) => Register(),
   '/tabBarControllerPage': (context) => TabBarControllerPage(),
   '/userInfo': (context) => UserInfo(),
+  '/dialog': (context) => DialogPage(),
   // '/message': (context) => Message(),
   // '/messagefull': (context, {arguments}) => MessageFull(arguments: arguments)
 };

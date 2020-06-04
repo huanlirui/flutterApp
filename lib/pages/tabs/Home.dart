@@ -63,6 +63,15 @@ class _HomePageState extends State<HomePage> {
                 color: Theme.of(context).accentColor,
                 textTheme: ButtonTextTheme.primary,
               ),
+              RaisedButton(
+                child: Text('跳转到弹窗页面'),
+                onPressed: () {
+                  //路由跳转
+                  Navigator.pushNamed(context, '/dialog');
+                },
+                color: Theme.of(context).accentColor,
+                textTheme: ButtonTextTheme.primary,
+              ),
             ],
           ),
         )

@@ -20,7 +20,7 @@ version: 1.0.0+1
 environment:
   sdk: '>=2.7.0 <3.0.0'
 
-dependencies:
+dependencies: 
   flutter:
     sdk: flutter
 
@@ -30,6 +30,7 @@ dependencies:
   date_format: ^1.0.8
   flutter_cupertino_date_picker: ^1.0.26
   flutter_swiper: ^1.1.6
+  fluttertoast: ^4.0.1
   flutter_localizations:
     sdk: flutter
 
