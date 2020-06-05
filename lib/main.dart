@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'routes/Routes.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:myapp/pages/Tabs.dart';
+
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -23,8 +24,13 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false, //去掉debugger图标
       initialRoute: '/firstPage', //初始化的时候加载路由
       onGenerateRoute: onGenerateRoute,
+      navigatorKey: Router.navigatorKey,
     );
   }
 }
 
 class PassArgumentsScreen {}
+
+class Router {
+  static GlobalKey<NavigatorState> navigatorKey = GlobalKey();
+}
