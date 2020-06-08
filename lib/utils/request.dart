@@ -82,7 +82,7 @@ class DioUtils {
       SharedPreferences prefs = await SharedPreferences.getInstance();
       String token = await prefs.getString('token');
       dio.options.headers['token'] = token ?? '';
-      dio.options.headers['Authorization'] = 'Bearer ' + token ?? '';
+      dio.options.headers['Authorization'] = 'Bearer ' +( token ?? '');
 
       if (method == DioUtils.GET) {
         response = await dio.get(url, queryParameters: parameters);

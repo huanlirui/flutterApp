@@ -5,6 +5,7 @@ import 'package:myapp/config/serviceUrl.dart';
 
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:myapp/components/Toast.dart';
+import 'package:myapp/provider/UserInfo.dart';
 
 class Login extends StatefulWidget {
   Login({Key key}) : super(key: key);
@@ -35,29 +36,36 @@ class _LoginState extends State<Login> {
   void _login() {
     print(_username.text);
     print(_password.text);
-    var param = {
-      "deviceToken": '123',
-      "password": _password.text,
-      "username": _username.text
-    };
+    if (_username.text != '' && _password.text != '') {
+      var param = {
+        "deviceToken": '123',
+        "password": _password.text,
+        "username": _username.text
+      };
 
-    DioUtils.requestHttp(
-      Api.login,
-      parameters: param,
-      method: 'post',
-      onSuccess: (data) {
-        ToastInfo.toastSuccess('登录成功！');
-        _setToken(data["token"]);
-        // 返回 tabs主页
-        Navigator.of(context).pushAndRemoveUntil(
-            new MaterialPageRoute(builder: (context) => new Tabs(index: 0)),
-            (route) => false);
-      },
-      onError: (error) {
-        print(error);
-        ToastInfo.toastError(error);
-      },
-    );
+      DioUtils.requestHttp(
+        Api.login,
+        parameters: param,
+        method: 'post',
+        onSuccess: (data) {
+          ToastInfo.toastSuccess('登录成功！');
+          _setToken(data["token"]);
+          // print(data.toString());
+          new UserInfo().setUserInfo(data);
+
+          // 返回 tabs主页
+          Navigator.of(context).pushAndRemoveUntil(
+              new MaterialPageRoute(builder: (context) => new Tabs(index: 0)),
+              (route) => false);
+        },
+        onError: (error) {
+          print(error);
+          ToastInfo.toastError(error);
+        },
+      );
+    } else {
+      ToastInfo.toastError('请输入账号密码');
+    }
   }
 
   @override
