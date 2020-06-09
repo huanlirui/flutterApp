@@ -31,7 +31,11 @@ class _PunchCardState extends State<PunchCard> {
                   elevation: 20.0,
                   //设置shape，这里设置成了R角
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                    borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(20.0),
+                        topRight: Radius.zero,
+                        bottomLeft: Radius.zero,
+                        bottomRight: Radius.circular(20.0)),
                   ),
                   //对Widget截取的行为，比如这里 Clip.antiAlias 指抗锯齿
                   clipBehavior: Clip.antiAlias,
@@ -39,7 +43,7 @@ class _PunchCardState extends State<PunchCard> {
                   child: Container(
                     color: Colors.white,
                     width: double.infinity,
-                    height: 150,
+                    height: 130,
                     alignment: Alignment.center,
                     child: Text(
                       "上班打卡",
@@ -54,7 +58,11 @@ class _PunchCardState extends State<PunchCard> {
                   elevation: 20.0,
                   //设置shape，这里设置成了R角
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                    borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(20.0),
+                        topRight: Radius.zero,
+                        bottomLeft: Radius.zero,
+                        bottomRight: Radius.circular(20.0)),
                   ),
                   //对Widget截取的行为，比如这里 Clip.antiAlias 指抗锯齿
                   clipBehavior: Clip.antiAlias,
@@ -62,7 +70,7 @@ class _PunchCardState extends State<PunchCard> {
                   child: Container(
                     color: Colors.white,
                     width: double.infinity,
-                    height: 150,
+                    height: 130,
                     alignment: Alignment.center,
                     child: Text(
                       "下班打卡",
@@ -71,7 +79,7 @@ class _PunchCardState extends State<PunchCard> {
                   ),
                 ),
                 Container(
-                  alignment:Alignment.bottomLeft,
+                  alignment: Alignment.bottomLeft,
                   child: Card(
                     margin: EdgeInsets.fromLTRB(20, 10, 20, 10),
                     color: Colors.blueAccent,
