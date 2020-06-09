@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:myapp/components/NowDate.dart';
 
 class PunchCard extends StatefulWidget {
   PunchCard({Key key}) : super(key: key);
@@ -13,41 +14,92 @@ class _PunchCardState extends State<PunchCard> {
     return DefaultTabController(
       length: 2,
       child: Scaffold(
-        appBar: AppBar(
-          title: Text("打卡页面"),
-          centerTitle: true,
-          bottom: TabBar(
-            tabs: <Widget>[
-              Tab(text: '正常打卡'),
-              Tab(text: '外勤打卡'),
-            ],
+          appBar: AppBar(
+            title: Text("考勤打卡"),
+            centerTitle: true,
           ),
-        ),
-        body: TabBarView(
-          children: <Widget>[
-            ListView(
+          body: SingleChildScrollView(
+            child: Column(
               children: <Widget>[
-                ListTile(
-                  title: Text('第一个tab'),
+                Container(
+                  child: NowDate(),
                 ),
-                ListTile(
-                  title: Text('第一个tab'),
+                Card(
+                  margin: EdgeInsets.fromLTRB(20, 10, 20, 10),
+                  color: Colors.blueAccent,
+                  //z轴的高度，设置card的阴影
+                  elevation: 20.0,
+                  //设置shape，这里设置成了R角
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                  ),
+                  //对Widget截取的行为，比如这里 Clip.antiAlias 指抗锯齿
+                  clipBehavior: Clip.antiAlias,
+                  semanticContainer: false,
+                  child: Container(
+                    color: Colors.white,
+                    width: double.infinity,
+                    height: 150,
+                    alignment: Alignment.center,
+                    child: Text(
+                      "上班打卡",
+                      style: TextStyle(fontSize: 28, color: Colors.blueAccent),
+                    ),
+                  ),
+                ),
+                Card(
+                  margin: EdgeInsets.fromLTRB(20, 10, 20, 10),
+                  color: Colors.blueAccent,
+                  //z轴的高度，设置card的阴影
+                  elevation: 20.0,
+                  //设置shape，这里设置成了R角
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                  ),
+                  //对Widget截取的行为，比如这里 Clip.antiAlias 指抗锯齿
+                  clipBehavior: Clip.antiAlias,
+                  semanticContainer: false,
+                  child: Container(
+                    color: Colors.white,
+                    width: double.infinity,
+                    height: 150,
+                    alignment: Alignment.center,
+                    child: Text(
+                      "下班打卡",
+                      style: TextStyle(fontSize: 28, color: Colors.blueAccent),
+                    ),
+                  ),
+                ),
+                Container(
+                  alignment:Alignment.bottomLeft,
+                  child: Card(
+                    margin: EdgeInsets.fromLTRB(20, 10, 20, 10),
+                    color: Colors.blueAccent,
+                    //z轴的高度，设置card的阴影
+                    elevation: 20.0,
+                    //设置shape，这里设置成了R角
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                    ),
+                    //对Widget截取的行为，比如这里 Clip.antiAlias 指抗锯齿
+                    clipBehavior: Clip.antiAlias,
+                    semanticContainer: false,
+                    child: Container(
+                      color: Colors.white,
+                      width: 100,
+                      height: 100,
+                      alignment: Alignment.center,
+                      child: Text(
+                        "外勤打卡",
+                        style:
+                            TextStyle(fontSize: 20, color: Colors.blueAccent),
+                      ),
+                    ),
+                  ),
                 )
               ],
             ),
-            ListView(
-              children: <Widget>[
-                ListTile(
-                  title: Text('第2个tab'),
-                ),
-                ListTile(
-                  title: Text('第2个tab'),
-                )
-              ],
-            )
-          ],
-        ),
-      ),
+          )),
     );
   }
 }
