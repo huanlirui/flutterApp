@@ -6,6 +6,7 @@ import 'package:myapp/config/serviceUrl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:myapp/components/Toast.dart';
 import 'package:myapp/provider/UserInfo.dart';
+import 'dart:convert';
 
 class Login extends StatefulWidget {
   Login({Key key}) : super(key: key);
@@ -33,6 +34,15 @@ class _LoginState extends State<Login> {
     }
   }
 
+  void _setUserInfo(Map userInfo) async {
+    if (userInfo != null) {
+      String jsonString = json.encode(userInfo);
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      await prefs.setString('userInfo', jsonString);
+      UserInfo.setUserInfo(jsonString);
+    }
+  }
+
   void _login() {
     print(_username.text);
     print(_password.text);
@@ -47,11 +57,11 @@ class _LoginState extends State<Login> {
         Api.login,
         parameters: param,
         method: 'post',
-        onSuccess: (data) {
+        onSuccess: (data) async {
           ToastInfo.toastSuccess('登录成功！');
           _setToken(data["token"]);
+          await _setUserInfo(data);
           // print(data.toString());
-          new UserInfo().setUserInfo(data);
 
           // 返回 tabs主页
           Navigator.of(context).pushAndRemoveUntil(

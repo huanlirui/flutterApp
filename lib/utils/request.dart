@@ -82,7 +82,7 @@ class DioUtils {
       SharedPreferences prefs = await SharedPreferences.getInstance();
       String token = await prefs.getString('token');
       dio.options.headers['token'] = token ?? '';
-      dio.options.headers['Authorization'] = 'Bearer ' +( token ?? '');
+      dio.options.headers['Authorization'] = 'Bearer ' + (token ?? '');
 
       if (method == DioUtils.GET) {
         response = await dio.get(url, queryParameters: parameters);
@@ -94,9 +94,9 @@ class DioUtils {
 
       if (response.statusCode == 200) {
         if (response.statusCode == 700) {
-          onError('token过期,请重新登录');
           Router.navigatorKey.currentState
               .pushNamedAndRemoveUntil("/login", ModalRoute.withName("/"));
+          onError('token过期,请重新登录');
         } else if (responseData['code'] == 200 || responseData['success']) {
           if (onSuccess != null) {
             var result = responseData['result'];

@@ -3,7 +3,7 @@ import 'package:myapp/config/serviceUrl.dart';
 
 class MenuItem extends StatelessWidget {
   final Map data;
-
+// final MenuItemViewModel = data;
   MenuItem({Key key, this.data}) : super(key: key);
 
   @override
@@ -29,20 +29,20 @@ class MenuItem extends StatelessWidget {
   }
 }
 
-class MenuItemViewModel {
-  /// 图标
-  final String icon;
+// class MenuItemViewModel {
+//   /// 图标
+//   final String icon;
 
-  /// 标题
-  final String title;
+//   /// 标题
+//   final String title;
 
-  final String iconId;
-  final String type;
+//   final String iconId;
+//   final String type;
 
-  const MenuItemViewModel({
-    this.icon,
-    this.title,
-    this.iconId,
-    this.type,
-  });
-}
+//   const MenuItemViewModel({
+//     this.icon,
+//     this.title,
+//     this.iconId,
+//     this.type,
+//   });
+// }

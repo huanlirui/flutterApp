@@ -1,4 +1,4 @@
-class UserInfo {
+class UserInfoModel {
   int age;
   List<AppMenus> appMenus;
   String avatar;
@@ -16,7 +16,7 @@ class UserInfo {
   String token;
   String username;
 
-  UserInfo(
+  UserInfoModel(
       {this.age,
       this.appMenus,
       this.avatar,
@@ -34,7 +34,7 @@ class UserInfo {
       this.token,
       this.username});
 
-  UserInfo.fromJson(Map<String, dynamic> json) {
+  UserInfoModel.fromJson(Map<String, dynamic> json) {
     age = json['age'];
     if (json['appMenus'] != null) {
       appMenus = new List<AppMenus>();

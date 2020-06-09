@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:myapp/pages/user/UserInfo.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:myapp/models/UserInfo.dart';
+import 'dart:convert';
 
 class UserInfo with ChangeNotifier {
   static Map _userInfo;
@@ -16,59 +19,43 @@ class UserInfo with ChangeNotifier {
   // Map get userInfo => _userInfo;
   // set userInfo(Map value) => _userInfo = value;
 
-  void setUserInfo(Map value) {
-    _userInfo = value;
+  static void setUserInfo(String userInfo) async {
+    Map userInfoJson = json.decode(userInfo);
+
+    _userInfo = userInfoJson;
+    _appMenu = userInfoJson['appMenus'];
+    _avatar = userInfoJson['avatar'];
+    _departs = userInfoJson['departs'];
+    _realName = userInfoJson['realname'];
+    _userId = userInfoJson['id'];
+    _userName = userInfoJson['username'];
   }
 
   static getUserInfo() {
     return _userInfo;
   }
 
-  get appMenus {
+  static getAppMenus() {
     return _appMenu;
   }
 
-  set appMenus(value) {
-    _appMenu = value;
-  }
-
-  get avator {
+  static get avator {
     return _avatar;
   }
 
-  set avator(value) {
-    _avatar = value;
-  }
-
-  get departs {
+  static get departs {
     return _departs;
   }
 
-  set departs(value) {
-    _departs = value;
-  }
-
-  get realName {
+  static get realName {
     return _realName;
   }
 
-  set realName(value) {
-    _realName = value;
-  }
-
-  get userId {
+  static get userId {
     return _userId;
   }
 
-  set userId(value) {
-    _userId = value;
-  }
-
-  get userName {
+  static get userName {
     return _userName;
-  }
-
-  set userName(value) {
-    _userName = value;
   }
 }
