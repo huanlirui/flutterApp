@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 
 import 'package:myapp/pages/user/Login.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:myapp/pages/Tabs.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:myapp/provider/UserInfo.dart';
 
 class FirstPage extends StatefulWidget {
   FirstPage({Key key}) : super(key: key);
@@ -27,10 +31,17 @@ class _FirstPageState extends State<FirstPage> {
     },
   ];
 
+  void getUserInfo() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String userInfo = await prefs.getString('userInfo');
+    UserInfo.setUserInfo(userInfo);
+  }
+
   @override
-  void initState() {
+  void initState()  {
     super.initState();
     _controller = new SwiperController();
+    getUserInfo();
   }
 
   Widget build(BuildContext context) {
@@ -81,12 +92,23 @@ class FloatButton extends StatelessWidget {
       ),
       child: FloatingActionButton(
         child: Icon(Icons.arrow_forward),
-        onPressed: () {
-          Navigator.of(context).pushAndRemoveUntil(
-              new MaterialPageRoute(
-                builder: (context) => new Login(),
-              ),
-              (route) => false);
+        onPressed: () async {
+          SharedPreferences prefs = await SharedPreferences.getInstance();
+          String token = await prefs.getString('token');
+
+          if (token != null) {
+            Navigator.of(context).pushAndRemoveUntil(
+                new MaterialPageRoute(
+                  builder: (context) => new Tabs(),
+                ),
+                (route) => false);
+          } else {
+            Navigator.of(context).pushAndRemoveUntil(
+                new MaterialPageRoute(
+                  builder: (context) => new Login(),
+                ),
+                (route) => false);
+          }
         },
       ),
     );

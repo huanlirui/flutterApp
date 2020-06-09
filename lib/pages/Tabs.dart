@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'tabs/Home.dart';
+import 'tabs/homePage/Home.dart';
 
 import 'tabs/MyInfo.dart';
 import 'tabs/Message.dart';

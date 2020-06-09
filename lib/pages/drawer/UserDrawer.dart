@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class UserDrawer extends StatelessWidget {
   const UserDrawer({Key key}) : super(key: key);
@@ -118,9 +119,12 @@ class UserDrawer extends StatelessWidget {
               leading: CircleAvatar(
                 child: Icon(Icons.reply),
               ),
-              onTap: () {
+              onTap: () async {
                 Navigator.of(context).pop(); // 隐藏侧边栏
                 Navigator.pushReplacementNamed(context, '/login');
+                SharedPreferences prefs = await SharedPreferences.getInstance();
+                await prefs.remove('token');
+                await prefs.remove('userInfo');
               },
             ),
             Divider(color: Colors.white),
