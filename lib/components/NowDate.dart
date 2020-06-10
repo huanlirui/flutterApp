@@ -64,15 +64,13 @@ class _NowDateState extends State<NowDate> {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.all(10),
-      child: Flex(
-        direction: Axis.horizontal,
+      child: Row(
         children: <Widget>[
           Expanded(
-            flex: 1,
             child: Text(
               _nowTimeString,
               style: TextStyle(
-                  fontSize: 60,
+                  fontSize: 45,
                   fontWeight: FontWeight.w600,
                   color: Colors.blue[500]),
             ),
@@ -91,6 +89,7 @@ class _NowDateState extends State<NowDate> {
                     '星期' + _weekDay[_nowDate.weekday - 1],
                     style: TextStyle(
                       fontSize: 16,
+                      fontWeight: FontWeight.w600
                     ),
                   ),
                 ],

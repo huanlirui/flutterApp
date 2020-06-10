@@ -18,8 +18,10 @@ class MyDialog extends Dialog {
 
   @override
   Widget build(BuildContext context) {
+   
     _showTimer(context);
     return Material(
+ 
       type: MaterialType.transparency,
       child: Center(
         child: Container(

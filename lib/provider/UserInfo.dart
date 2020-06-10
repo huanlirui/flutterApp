@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/pages/user/UserInfo.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:myapp/models/UserInfo.dart';
+
 import 'dart:convert';
 
 class UserInfo with ChangeNotifier {
@@ -20,15 +18,16 @@ class UserInfo with ChangeNotifier {
   // set userInfo(Map value) => _userInfo = value;
 
   static void setUserInfo(String userInfo) async {
-    Map userInfoJson = json.decode(userInfo);
-
-    _userInfo = userInfoJson;
-    _appMenu = userInfoJson['appMenus'];
-    _avatar = userInfoJson['avatar'];
-    _departs = userInfoJson['departs'];
-    _realName = userInfoJson['realname'];
-    _userId = userInfoJson['id'];
-    _userName = userInfoJson['username'];
+    if (userInfo != null) {
+      Map userInfoJson = json.decode(userInfo);
+      _userInfo = userInfoJson;
+      _appMenu = userInfoJson['appMenus'];
+      _avatar = userInfoJson['avatar'];
+      _departs = userInfoJson['departs'];
+      _realName = userInfoJson['realname'];
+      _userId = userInfoJson['id'];
+      _userName = userInfoJson['username'];
+    }
   }
 
   static getUserInfo() {
