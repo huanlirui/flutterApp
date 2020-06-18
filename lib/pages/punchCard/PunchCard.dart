@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/components/NowDate.dart';
 import 'CardInfo.dart';
+import 'PunchDetail.dart';
 
 class PunchCard extends StatefulWidget {
   PunchCard({Key key}) : super(key: key);
@@ -48,7 +49,10 @@ class _PunchCardState extends State<PunchCard> {
                               Icons.event_note,
                               color: Colors.indigo[400],
                             ),
-                            Text('考勤记录'),
+                            Text(
+                              '考勤记录',
+                              style: TextStyle(fontWeight: FontWeight.w600),
+                            ),
                           ],
                         ),
                       ),
@@ -72,17 +76,30 @@ class _PunchCardState extends State<PunchCard> {
                 //对Widget截取的行为，比如这里 Clip.antiAlias 指抗锯齿
                 clipBehavior: Clip.antiAlias,
                 semanticContainer: false,
-                child: Container(
-                  color: Colors.white,
-                  width: double.infinity,
-                  height: 130,
-                  alignment: Alignment.center,
-                  child: CardInfo(
-                      normalTime: '08:00',
-                      clockType: '上班',
-                      exceptionText: '正常打卡',
-                      exceptionTime: '07:50',
-                      status: '0'),
+                child: InkWell(
+                  onTap: () {
+                    // Navigator.of(context).push(
+                    //   MaterialPageRoute(
+                    //     builder: (context) => PunchDetail(
+                    //       arguments: {'type': '1'},
+                    //     ),
+                    //   ),
+                    // );
+                    Navigator.pushNamed(context, '/punchDetail',
+                        arguments: {'type': '1'});
+                  },
+                  child: Container(
+                    color: Colors.white,
+                    width: double.infinity,
+                    height: 130,
+                    alignment: Alignment.center,
+                    child: CardInfo(
+                        normalTime: '08:00',
+                        clockType: '上班',
+                        exceptionText: '正常打卡',
+                        exceptionTime: '07:50',
+                        status: '0'),
+                  ),
                 ),
               ),
               Card(

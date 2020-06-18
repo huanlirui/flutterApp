@@ -11,7 +11,7 @@ import '../pages/tabs/TabBarConTroller.dart';
 import '../pages/user/UserInfo.dart';
 import 'package:myapp/pages/firstPage/FirstPage.dart';
 import 'package:myapp/pages/dialog/DialogPage.dart';
-
+import 'package:myapp/pages/punchCard/PunchDetail.dart';
 //配置路由
 final routes = {
   '/firstPage': (context) => FirstPage(),
@@ -22,6 +22,7 @@ final routes = {
   '/tabBarControllerPage': (context) => TabBarControllerPage(),
   '/userInfo': (context) => UserInfo(),
   '/dialog': (context) => DialogPage(),
+  '/punchDetail':(context, {arguments}) => PunchDetail(arguments: arguments)
   // '/message': (context) => Message(),
   // '/messagefull': (context, {arguments}) => MessageFull(arguments: arguments)
 };

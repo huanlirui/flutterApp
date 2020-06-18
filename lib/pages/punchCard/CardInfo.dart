@@ -131,7 +131,7 @@ class CardInfo extends StatelessWidget {
                       Text(exceptionText),
                       Text(
                         exceptionTime,
-                        style: TextStyle(color: Colors.red[200]),
+                        style: TextStyle(color: Colors.red[300],fontWeight: FontWeight.w700),
                       ),
                     ],
                   ),
