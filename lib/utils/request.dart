@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:myapp/pages/user/Login.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 const BaseRoot = "http://192.168.1.253:8080/jeecg-boot/";
 
@@ -56,6 +57,18 @@ class DioUtils {
     dio = null;
   }
 
+  static void _toast() {
+    Fluttertoast.showToast(
+      msg: "服务器出错,请稍后重试",
+      toastLength: Toast.LENGTH_SHORT,
+      gravity: ToastGravity.CENTER,
+      timeInSecForIosWeb: 1,
+      backgroundColor: Colors.red,
+      textColor: Colors.white,
+      fontSize: 16.0,
+    );
+  }
+
   /// request Get、Post 请求
   //url 请求链接
   //parameters 请求参数
@@ -106,11 +119,14 @@ class DioUtils {
           onError(responseData['message']);
         }
       } else {
+        _toast();
         throw Exception('${responseData['message']}');
       }
+
       // print('响应数据：' + response.toString());
     } catch (e) {
       print('请求出错：' + e.toString());
+      _toast();
       onError(e.toString());
     }
   }

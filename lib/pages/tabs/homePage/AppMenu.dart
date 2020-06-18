@@ -3,7 +3,7 @@ import 'MenuItem.dart';
 import 'package:myapp/provider/UserInfo.dart';
 
 class AppMenu extends StatelessWidget {
-  List appMenuList = UserInfo.getAppMenus();
+  List appMenuList = UserInfo.getAppMenus()??[];
 
   // List appMenuList = userInfo != null ? userInfo['appMenus'] : [];
   AppMenu() {

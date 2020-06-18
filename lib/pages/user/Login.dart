@@ -7,6 +7,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:myapp/components/Toast.dart';
 import 'package:myapp/provider/UserInfo.dart';
 import 'dart:convert';
+import 'package:myapp/provider/DeviceInfo.dart';
 
 class Login extends StatefulWidget {
   Login({Key key}) : super(key: key);
@@ -44,15 +45,16 @@ class _LoginState extends State<Login> {
   }
 
   void _login() {
-    print(_username.text);
-    print(_password.text);
+    // print(_username.text);
+    // print(_password.text);
     if (_username.text != '' && _password.text != '') {
+      String androidID = DeviceInfo.getAndroidId();
       var param = {
-        "deviceToken": '123',
+        "deviceToken": androidID ?? '123',
         "password": _password.text,
         "username": _username.text
       };
-
+      print(param);
       DioUtils.requestHttp(
         Api.login,
         parameters: param,

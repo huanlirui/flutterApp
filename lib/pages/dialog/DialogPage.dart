@@ -10,6 +10,7 @@ class DialogPage extends StatefulWidget {
 }
 
 class _DialogPageState extends State<DialogPage> {
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   _alertDialog() async {
     var result = await showDialog(
       context: context,
@@ -126,7 +127,7 @@ class _DialogPageState extends State<DialogPage> {
 
   _showMydialog() {
     showDialog(
-      context: context,
+      context: _scaffoldKey.currentContext,
       builder: (context) {
         return MyDialog(title: "标题", content: "我是内容");
       },

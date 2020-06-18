@@ -5,16 +5,18 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:myapp/pages/Tabs.dart';
 
 import 'provider/UserInfo.dart';
+import 'provider/DeviceInfo.dart';
 import 'package:provider/provider.dart';
 
 // void main() => runApp(MyApp());
 void main() {
   var userInfo = UserInfo();
-
+  var deviceInfo = DeviceInfo();
   runApp(
     MultiProvider(
       providers: [
         ChangeNotifierProvider.value(value: userInfo),
+        ChangeNotifierProvider.value(value: deviceInfo),
       ],
       child: MyApp(),
     ),
