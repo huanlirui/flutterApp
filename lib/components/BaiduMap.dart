@@ -19,12 +19,12 @@ class _BaiduMapState extends State<BaiduMap> {
     /// 初始化(0.17.0开始可以不用配置AndroidManifest.xml)
     /// !!但是你如果你使用了amap_search_fluttify或amap_location_fluttify, 那么仍旧需要在AndroidManifest.xml中配置key!
     /// AndroidManifest.xml配置key参考 https://lbs.amap.com/api/android-sdk/gettingstarted
+    await enableFluttifyLog(false);
     await AmapService.init(
         iosKey: '27720658f878bee7d1e165298a1bd294',
         androidKey: '27720658f878bee7d1e165298a1bd294');
 
     /// 如果你觉得引擎的日志太多, 可以关闭Fluttify引擎的日志
-    await enableFluttifyLog(false);
   }
 
   @override
@@ -43,13 +43,17 @@ class _BaiduMapState extends State<BaiduMap> {
   }
 }
 
+// Map<Permission, PermissionStatus> statues =
+//     await [Permission.locationWhenInUse].request();
+// print(statues.toString());
 Future<bool> requestPermission() async {
-  final status = await Permission.location.request();
-
+  var status = await Permission.location.request();
+  print(status);
   if (status == PermissionStatus.granted) {
     return true;
   } else {
     print('需要定位权限');
+    openAppSettings();
     return false;
   }
 }
