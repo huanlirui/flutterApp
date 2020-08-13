@@ -47,7 +47,6 @@ class _PunchDetailState extends State<PunchDetail> {
           stream: FlutterBlue.instance.state,
           initialData: BluetoothState.unknown,
           builder: (c, snapshot) {
-            print(snapshot);
             final state = snapshot.data;
             if (state == BluetoothState.on) {
               return Container(

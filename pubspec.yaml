@@ -28,7 +28,13 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.3
   date_format: ^1.0.8
-  flutter_cupertino_date_picker: ^1.0.26
+  # flutter_cupertino_date_picker: ^1.0.26+2
+  # 官方未修复 flutter 1.20报错
+  flutter_cupertino_date_picker:
+    git:
+      url: https://github.com/huanlirui/flutter-cupertino-date-picker.git # 自己的源
+      ref: master # Branch name
+
   flutter_swiper: ^1.1.6
   fluttertoast: ^4.0.1
   dio: ^3.0.9
@@ -38,6 +44,7 @@ dependencies:
   # bmap_map_fluttify: ^0.0.2  #百度地图
   amap_map_fluttify: ^0.23.2 #高德地图
   permission_handler: ^5.0.1
+  flutter_blue: ^0.6.3+1
   flutter_localizations:
     sdk: flutter
 
